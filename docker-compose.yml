@@ -75,3 +75,5 @@ services:
       - NATS_SERVERS=nats://nats-service:4222
       - PORT=${AUTH_MS_PORT}
       - DATABASE_URL=${AUTH_DATABASE_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN}
