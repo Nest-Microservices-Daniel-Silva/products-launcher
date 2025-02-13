@@ -20,5 +20,10 @@ spec:
       containers:
       - image: northamerica-south1-docker.pkg.dev/microservices-nestjs-450117/image-registry/client-gateway
         name: client-gateway
+        env:
+        - name: PORT
+          value: "3000"
+        - name: NATS_SERVERS
+          value: "nats://nats"
         resources: {}
 status: {}
