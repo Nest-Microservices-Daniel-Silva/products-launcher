@@ -1,59 +1,44 @@
 ## Dev
+1. Clone the repository
+2. Create a .env based on .env.template
+3. Run the command `git submodule update --init --recursive` to rebuild submodules
+4. Run the command `docker compose up --build`
 
-1. Clonar el repositorio
-2. Crear un .env basado en el .env.template
-3. Ejecutar el comando `git submodule update --init --recursive` para reconstruir los sub-módulos
-4. Ejecutar el comando `docker compose up --build`
-
-### Pasos para crear los Git Submodules
-
-1. Crear un nuevo repositorio en GitHub
-2. Clonar el repositorio en la máquina local
-3. Añadir el submodule, donde `repository_url` es la url del repositorio y `directory_name` es el nombre de la carpeta donde quieres que se guarde el sub-módulo (no debe de existir en el proyecto)
-
+### Steps to create Git Submodules
+1. Create a new repository on GitHub
+2. Clone the repository to your local machine
+3. Add the submodule, where `repository_url` is the URL of the repository and `directory_name` is the folder name where you want to store the submodule (it must not already exist in the project)
 ```bash
 git submodule add <repository_url> <directory_name>
 ```
-
-4. Añadir los cambios al repositorio (git add, git commit, git push)
-   Ej:
-
+4. Add changes to the repository (git add, git commit, git push)
+   Example:
 ```bash
 git add .
 git commit -m "Add submodule"
 git push
 ```
-
-5. Inicializar y actualizar Sub-módulos, cuando alguien clona el repositorio por primera vez, debe de ejecutar el siguiente comando para inicializar y actualizar los sub-módulos
-
+5. Initialize and update Submodules, when someone clones the repository for the first time, they must run the following command to initialize and update the submodules
 ```bash
 git submodule update --init --recursive
 ```
-
-6. Para actualizar las referencias de los sub-módulos
-
+6. To update submodule references
 ```bash
 git submodule update --remote
 ```
 
-## Importante
-
-Si se trabaja en el repositorio que tiene los sub-módulos, **primero actualizar y hacer push** en el sub-módulo y **después** en el repositorio principal.
-
-Si se hace al revés, se perderán las referencias de los sub-módulos en el repositorio principal y tendremos que resolver conflictos.
+## Important
+If you're working in a repository that has submodules, **first update and push** in the submodule and **then** in the main repository.
+If done in reverse order, submodule references in the main repository will be lost and you'll have to resolve conflicts.
 
 ## Production
-
-1. Clonar repositorio
-2. Crear un .env basado en el .env.template
-3. Ejecutar el comando para construir las imagenes
-
+1. Clone repository
+2. Create a .env based on .env.template
+3. Run the command to build the images
 ```bash
 docker compose -f docker-compose.prod.yml build
 ```
-
-4. Ejecutar el comando para levantar los contenedores
-
+4. Run the command to start the containers
 ```bash
 docker compose -f docker-compose.prod.yml up
 ```
